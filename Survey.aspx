@@ -25,6 +25,7 @@
             
         </div>
         <asp:Button ID="SaveButton" runat="server" Text="Zapisz" />
+        <asp:Label ID="dataLabel" runat="server"></asp:Label>
     </form>
 </body>
 </html>

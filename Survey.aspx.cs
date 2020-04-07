@@ -17,7 +17,7 @@ namespace PI {
         protected void Page_Load(object sender, EventArgs e) {
             LoadQuestions();
             GenerateRBL();
-           
+            dataLabel.Text = "numer albumu: " + Request.QueryString["album"] + "\temail: " + Request.QueryString["email"];
 
         }
 
