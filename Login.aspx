@@ -29,6 +29,7 @@
         </div>
         <asp:Button ID="zaloguj" runat="server" BackColor="White" OnClick="Button1_Click" Text="Zaloguj" Width="118px" />
         <br />
+        <asp:Label ID="ErrorLabel" runat="server" ForeColor="Maroon"></asp:Label>
     </form>
 </body>
 </html>
