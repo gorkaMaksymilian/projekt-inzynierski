@@ -24,7 +24,7 @@
         <div id="test1" runat="server">
             
         </div>
-        <asp:Button ID="SaveButton" runat="server" Text="Zapisz" />
+        <asp:Button ID="SaveButton" runat="server" Text="Zapisz" OnClick="SaveButton_Click" />
         <asp:Label ID="dataLabel" runat="server"></asp:Label>
     </form>
 </body>
