@@ -103,7 +103,7 @@ namespace PI {
 
             var fromAddress = new MailAddress("projekt.anieta.anonimowa@gmail.com", "Ankieta");
             var toAddress = new MailAddress(Request.QueryString["email"], "test");
-            const string fromPassword = "ABC123!@#";
+            const string fromPassword = "passwd";
             const string subject = "Temat Haslo";
             string body = "Twoje haslo to: " + passwd;
 
