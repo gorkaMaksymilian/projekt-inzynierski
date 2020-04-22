@@ -93,10 +93,6 @@ namespace PI {
         }
 
 
-
-
-
-
         protected void SaveButton_Click(object sender, EventArgs e) {
             string passwd = Membership.GeneratePassword(14, 6);
             UserVoted(passwd); 
