@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 namespace Głosowanievol2 {
     public partial class WebForm1 : System.Web.UI.Page {
         //Zmien mnie mihau
-        string connectionString = "Data Source=ABYDOS-WSS-GOR\\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True";
+        string connectionString = "Data Source=MICHAŁ\\SQLEXPRESS;Initial Catalog=Glosowanie;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e) {
 
@@ -75,6 +75,11 @@ namespace Głosowanievol2 {
             connection.Close();
         }
 
+
+        protected void Sprawdz(object sender, EventArgs e)
+        {
+            Response.Redirect("check.aspx");
+        }
     }
 
     
