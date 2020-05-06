@@ -10,7 +10,7 @@
 namespace PI {
 
 
-    public partial class Login {
+    public partial class Check {
 
         /// <summary>
         /// Kontrolka form1.
@@ -22,48 +22,30 @@ namespace PI {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Kontrolka email.
+        /// Kontrolka TypePass.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox email;
+        protected global::System.Web.UI.WebControls.TextBox TypePass;
 
         /// <summary>
-        /// Kontrolka nralbumu.
+        /// Kontrolka ButtonPass.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nralbumu;
+        protected global::System.Web.UI.WebControls.Button ButtonPass;
 
         /// <summary>
-        /// Kontrolka zaloguj.
+        /// Kontrolka GridView1.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button zaloguj;
-
-        /// <summary>
-        /// Kontrolka Sprawdz1.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Sprawdz1;
-
-        /// <summary>
-        /// Kontrolka ErrorLabel.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrorLabel;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

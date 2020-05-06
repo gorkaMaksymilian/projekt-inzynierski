@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Głosowanievol2.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="PI.Login" %>
 
 <!DOCTYPE html>
 
@@ -11,7 +11,6 @@
             height: 72px;
             width: 131px;
             margin: auto;
-
         }
         .auto-style2 {
             margin-right: 0px;

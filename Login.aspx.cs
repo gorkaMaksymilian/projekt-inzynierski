@@ -7,10 +7,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Głosowanievol2 {
-    public partial class WebForm1 : System.Web.UI.Page {
+
+namespace PI {
+    public partial class Login : System.Web.UI.Page {
         //Zmien mnie mihau
-        string connectionString = "Data Source=MICHAŁ\\SQLEXPRESS;Initial Catalog=Glosowanie;Integrated Security=True";
+        string connectionString = "Data Source=ABYDOS-WSS-GOR\\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e) {
 
@@ -25,10 +26,30 @@ namespace Głosowanievol2 {
         }
 
         protected void Button1_Click(object sender, EventArgs e) {
-            if (userExist()) {
-                Response.Redirect("Survey.aspx?album=" + nralbumu.Text + "&email=" + email.Text);
+            LoginValidator emailExist = new EmailPresent();
+            LoginValidator emailValid = new EmailValid();
+            LoginValidator albumExist = new AlbumNumberPresent();
+            LoginValidator albumValid = new AlbumNumberValid();
+
+            emailExist.SetNextHandler(emailValid);
+            emailValid.SetNextHandler(albumExist);
+            albumExist.SetNextHandler(albumValid);
+
+            List<string> ErrorList = emailExist.HandleRequest(this);
+            foreach (string error in ErrorList) {
+                ErrorLabel.Text = error;
             }
-           
+            
+            if(ErrorList.Count==0) {
+                ErrorLabel.Text = "";
+                if (userExist()) {
+                    Response.Redirect("Survey.aspx?album=" + nralbumu.Text + "&email=" + email.Text);
+                }
+            }
+
+
+
+
         }
 
         protected bool userExist() {
@@ -73,14 +94,28 @@ namespace Głosowanievol2 {
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
+           
         }
 
 
-        protected void Sprawdz(object sender, EventArgs e)
-        {
+        protected void Sprawdz(object sender, EventArgs e) {
             Response.Redirect("check.aspx");
+            
         }
+
+        public string getAlbum() {
+            return nralbumu.Text;
+        }
+
+        public string getEmail() {
+            return email.Text;
+        }
+
     }
 
-    
+
+
+
 }
+
+    
