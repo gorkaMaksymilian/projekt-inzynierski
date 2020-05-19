@@ -10,7 +10,6 @@ using System.Web.UI.WebControls;
 
 namespace PI {
     public partial class Login : System.Web.UI.Page {
-        //Zmien mnie mihau
         string connectionString = "Data Source=ABYDOS-WSS-GOR\\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e) {

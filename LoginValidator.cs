@@ -4,15 +4,21 @@ using System.Linq;
 using System.Web;
 
 namespace PI {
-    public abstract class LoginValidator {
-        protected LoginValidator nextHandler;
+    public interface Validator {
+        void SetNextHandler(Validator handler);
+        List<string> HandleRequest(Login page);
+    }
+
+
+    public abstract class LoginValidator : Validator {
+        protected Validator nextHandler;
         protected List<string> ErrorList;
 
         protected LoginValidator() {
             ErrorList = new List<string>();
         }
 
-        public void SetNextHandler(LoginValidator handler) {
+        public void SetNextHandler(Validator handler) {
             this.nextHandler = handler;
         }
 

@@ -36,6 +36,19 @@ namespace PI {
             GridView1.DataBind();
             conn.Close();
 
+            query = "select hash from UsrAnswers where passwd = '" + TypePass.Text + "';";
+            command = new SqlCommand(query, conn);
+
+            conn.Open();
+            using (SqlDataReader reader = command.ExecuteReader()) {
+                if (reader.Read()) {
+                    Label1.Text = "Zapisany hash to:" + reader.GetString(0);
+                }
+            }
+            conn.Close();
+
         }
+
+
     }
 }

@@ -15,6 +15,7 @@
             <asp:Button ID="ButtonPass" runat="server" OnClick="ButtonPass_Click" Text="Autoryzuj" />
         </p>
         <p>
+            <asp:Label ID="Label1" runat="server"></asp:Label>
             <asp:GridView ID="GridView1" runat="server">
             </asp:GridView>
         </p>
