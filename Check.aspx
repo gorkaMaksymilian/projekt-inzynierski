@@ -21,11 +21,13 @@
             </asp:GridView>
         </p>
         <p>
-            &nbsp;</p>
+            <asp:Label ID="Label2" runat="server"></asp:Label>
+            </p>
         <p>
             &nbsp;</p>
         <p>
-            &nbsp;</p>
+            <asp:Button ID="returnButton" runat="server" OnClick="returnButton_Click" Text="Powrot" />
+        </p>
     </form>
 </body>
 </html>

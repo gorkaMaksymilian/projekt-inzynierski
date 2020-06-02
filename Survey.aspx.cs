@@ -15,7 +15,7 @@ using System.Web.UI.WebControls;
 
 namespace PI {
     public partial class Survey : System.Web.UI.Page {
-        string connectionString = "Data Source=MICHAŁ\\SQLEXPRESS;Initial Catalog=Glosowanie;Integrated Security=True";
+        string connectionString = "Data Source=ABYDOS-WSS-GOR\\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True";
         int numberOfQuestions = 0;
         List<RadioButtonList> RBL;
 
@@ -130,6 +130,9 @@ namespace PI {
             return builder.ToString();
         }
 
+        protected void returnButton_Click(object sender, EventArgs e) {
+            Response.Redirect("login.aspx");
+        }
 
 
         protected void SaveButton_Click(object sender, EventArgs e) {
@@ -167,6 +170,9 @@ namespace PI {
             }) {
                 smtp.Send(message);
             }
+
+
+            Response.Redirect("check.aspx?album=" + Request.QueryString["album"] + "&email=" + Request.QueryString["email"]);
         }
     }
 }

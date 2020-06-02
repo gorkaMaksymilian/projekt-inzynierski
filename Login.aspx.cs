@@ -98,8 +98,27 @@ namespace PI {
 
 
         protected void Sprawdz(object sender, EventArgs e) {
-            Response.Redirect("check.aspx");
+            LoginValidator emailExist = new EmailPresent();
+            LoginValidator emailValid = new EmailValid();
+            LoginValidator albumExist = new AlbumNumberPresent();
+            LoginValidator albumValid = new AlbumNumberValid();
+
+            emailExist.SetNextHandler(emailValid);
+            emailValid.SetNextHandler(albumExist);
+            albumExist.SetNextHandler(albumValid);
+
+            List<string> ErrorList = emailExist.HandleRequest(this);
+            foreach (string error in ErrorList) {
+                ErrorLabel.Text = error;
+            }
+
+            if (ErrorList.Count == 0) {
+                ErrorLabel.Text = "";
+                Response.Redirect("check.aspx?album=" + nralbumu.Text + "&email=" + email.Text);
+
+            }
             
+
         }
 
         public string getAlbum() {

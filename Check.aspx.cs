@@ -19,6 +19,10 @@ namespace PI {
 
         }
 
+        protected void returnButton_Click(object sender, EventArgs e) {
+            Response.Redirect("login.aspx");
+        }
+
         protected void ButtonPass_Click(object sender, EventArgs e) {
             SqlConnection connection = new SqlConnection(connectionString);
             SqlDataAdapter adapter;
@@ -42,10 +46,15 @@ namespace PI {
             conn.Open();
             using (SqlDataReader reader = command.ExecuteReader()) {
                 if (reader.Read()) {
-                    Label1.Text = "Zapisany hash to:" + reader.GetString(0);
+                    Label1.Text = "Zapisany hash to: \n" + reader.GetString(0);
                 }
             }
             conn.Close();
+
+
+            string hash = Request.QueryString["album"] + Request.QueryString["email"] + GridView1.Rows[0].Cells[0].Text + GridView1.Rows[0].Cells[1].Text + GridView1.Rows[0].Cells[2].Text;
+            Label2.Text = "Swiezo wygenerowany hash: \n" + Survey.GetHashString(hash);
+
 
         }
 

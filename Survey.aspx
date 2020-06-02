@@ -34,6 +34,8 @@
             </div>
 
             <asp:Button CssClass="form button" ID="SaveButton" runat="server" Text="Zapisz" OnClick="SaveButton_Click" style="left: 0px; top: 0px; width: 100%; height: 67px" />
+
+            <asp:Button CssClass="form button" ID="returnButton" runat="server" Text="Powrot" OnClick="returnButton_Click" style="left: 0px; top: 0px; width: 100%; height: 67px" />
             <asp:Label ID="dataLabel" runat="server"></asp:Label>
             </div>
 
