@@ -15,7 +15,7 @@ using System.Web.UI.WebControls;
 
 namespace PI {
     public partial class Survey : System.Web.UI.Page {
-        string connectionString = "Data Source=ABYDOS-WSS-GOR\\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True";
+        string connectionString = "Data Source=MICHAŁ\\SQLEXPRESS;Initial Catalog=Glosowanie;Integrated Security=True";
         int numberOfQuestions = 0;
         List<RadioButtonList> RBL;
 
@@ -24,11 +24,31 @@ namespace PI {
             RBL = GenerateRBL();
             dataLabel.Text = "numer albumu: " + Request.QueryString["album"] + "\temail: " + Request.QueryString["email"];
 
+            
+
         }
 
 
         //Wczytuje pytania do QuestionsGrid
         protected void LoadQuestions() {
+            /*
+             var select = "select question from dbo.Questions";
+
+             var c = new SqlConnection(connectionString);
+             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, c);
+
+             var commandBuilder = new SqlCommandBuilder(dataAdapter);
+             DataSet ds = new DataSet();
+             dataAdapter.Fill(ds);
+             var dt = ds.Tables[0];
+             numberOfQuestions = dt.Rows.Count;
+
+             Ask1.Text = dt.Rows[0][0].ToString();
+             Ask2.Text = dt.Rows[1][0].ToString();
+             Ask3.Text = dt.Rows[2][0].ToString();
+              */
+
+
             var select = "select question from dbo.Questions";
             var c = new SqlConnection(connectionString);
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, c);
@@ -41,6 +61,10 @@ namespace PI {
 
             QuestionsGrid.DataSource = dt;
             QuestionsGrid.DataBind();
+
+
+
+
 
         }
 
