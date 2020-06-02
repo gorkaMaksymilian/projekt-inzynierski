@@ -18,10 +18,16 @@ namespace PI {
 
         }
 
+        [Test]
+        public void GenerateTestUsers() {
+            driver.Url = "https://localhost:44358/GenerateTestScenarios.aspx";
+            driver.FindElement(By.XPath("//html//body//form//div[3]//input")).Click();
+        }
+
         // Scenario when user exist but he did not voted yet
         [Test]
         public void Login_UserExist() {
-
+            GenerateTestUsers();
             driver.Url = "https://localhost:44358/Login.aspx";
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             // Set email
@@ -39,7 +45,7 @@ namespace PI {
         // Scenario when user exist and he already voted
         [Test]
         public void Login_UserExistVoted() {
-            
+            GenerateTestUsers();
             driver.Url = "https://localhost:44358/Login.aspx";
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             // Set email
@@ -57,7 +63,7 @@ namespace PI {
         // Check specific user login action
         [Test]
         public void Login_UserCheckAnswers() {
-
+            GenerateTestUsers();
             driver.Url = "https://localhost:44358/Login.aspx";
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             // Set email
