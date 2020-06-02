@@ -18,11 +18,16 @@ namespace PI {
         string connectionString = "Data Source=ABYDOS-WSS-GOR\\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True";
         int numberOfQuestions = 0;
         List<RadioButtonList> RBL;
+        List<string> variablesList;
 
         protected void Page_Load(object sender, EventArgs e) {
             LoadQuestions();
             RBL = GenerateRBL();
-            dataLabel.Text = "numer albumu: " + Request.QueryString["album"] + "\temail: " + Request.QueryString["email"];
+            if (Session["Variables"] != null) {
+                variablesList = (List<string>)Session["Variables"];
+                dataLabel.Text = "numer albumu: " + variablesList[0] + "\temail: " + variablesList[1];
+                
+            }
 
             
 
@@ -95,7 +100,7 @@ namespace PI {
         protected void UserVoted(string passwd, string hash) {
             var connection = new SqlConnection(connectionString);
             SqlCommand command = connection.CreateCommand();
-            command.CommandText = "update dbo.Users set saved = 1 where mail = '"+ Request.QueryString["email"] + "'";
+            command.CommandText = "update dbo.Users set saved = 1 where mail = '"+ variablesList[1] + "'";
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -145,12 +150,12 @@ namespace PI {
             }
 
 
-            string hash = Request.QueryString["album"] + Request.QueryString["email"] + selections[0] + selections[1] + selections[2];
+            string hash = variablesList[0] + variablesList[1] + selections[0] + selections[1] + selections[2];
             string passwd = Membership.GeneratePassword(14, 6);
             UserVoted(passwd, GetHashString(hash)); 
 
             var fromAddress = new MailAddress("projekt.anieta.anonimowa@gmail.com", "Ankieta");
-            var toAddress = new MailAddress(Request.QueryString["email"], "test");
+            var toAddress = new MailAddress(variablesList[1], "test");
             const string fromPassword = "ABC123!@#";
             const string subject = "Temat Haslo";
             string body = "Twoje haslo to: " + passwd + "\n Twoj hash to: " + GetHashString(hash);
@@ -171,8 +176,8 @@ namespace PI {
                 smtp.Send(message);
             }
 
-
-            Response.Redirect("check.aspx?album=" + Request.QueryString["album"] + "&email=" + Request.QueryString["email"]);
+            Session["Variables"] = variablesList;
+            Response.Redirect("check.aspx");
         }
     }
 }

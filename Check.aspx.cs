@@ -11,8 +11,13 @@ namespace PI {
     public partial class Check : System.Web.UI.Page {
         static string connectionString = "Data Source=ABYDOS-WSS-GOR\\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True";
         SqlConnection conn = new SqlConnection(connectionString);
+        List<string> variablesList;
         protected void Page_Load(object sender, EventArgs e) {
+            if (Session["Variables"] != null) {
+                variablesList = (List<string>)Session["Variables"];
+          
 
+            }
         }
 
         protected void TypePass_TextChanged(object sender, EventArgs e) {
@@ -51,8 +56,8 @@ namespace PI {
             }
             conn.Close();
 
-
-            string hash = Request.QueryString["album"] + Request.QueryString["email"] + GridView1.Rows[0].Cells[0].Text + GridView1.Rows[0].Cells[1].Text + GridView1.Rows[0].Cells[2].Text;
+           
+            string hash = variablesList[0] + variablesList[1] + GridView1.Rows[0].Cells[0].Text + GridView1.Rows[0].Cells[1].Text + GridView1.Rows[0].Cells[2].Text;
             Label2.Text = "Swiezo wygenerowany hash: \n" + Survey.GetHashString(hash);
 
 

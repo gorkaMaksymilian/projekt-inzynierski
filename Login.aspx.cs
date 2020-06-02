@@ -13,7 +13,7 @@ namespace PI {
         string connectionString = "Data Source=ABYDOS-WSS-GOR\\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True";
 
         protected void Page_Load(object sender, EventArgs e) {
-
+            
         }
 
         protected void TextBox2_TextChanged(object sender, EventArgs e) {
@@ -42,7 +42,12 @@ namespace PI {
             if(ErrorList.Count==0) {
                 ErrorLabel.Text = "";
                 if (userExist()) {
-                    Response.Redirect("Survey.aspx?album=" + nralbumu.Text + "&email=" + email.Text);
+                    List<string> list = new List<string>();
+                    list.Add(nralbumu.Text);
+                    list.Add(email.Text);
+                    Session["Variables"] = list;
+
+                    Response.Redirect("Survey.aspx");
                 }
             }
 
@@ -114,7 +119,11 @@ namespace PI {
 
             if (ErrorList.Count == 0) {
                 ErrorLabel.Text = "";
-                Response.Redirect("check.aspx?album=" + nralbumu.Text + "&email=" + email.Text);
+                List<string> list = new List<string>();
+                list.Add(nralbumu.Text);
+                list.Add(email.Text);
+                Session["Variables"] = list;
+                Response.Redirect("check.aspx");
 
             }
             
