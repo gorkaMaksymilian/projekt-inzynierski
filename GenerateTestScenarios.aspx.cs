@@ -8,18 +8,48 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace PI {
+    ///<summary>
+    ///The main <c>GenerateTestScenarios</c> class
+    ///Contains all methods that are able to be called on GenerateTestScenarios.aspx
+    ///This page is only used by the testing enviroment.
+    ///</summary>
     public partial class GenerateTestScenarios : System.Web.UI.Page {
+        /// <summary>
+        /// Stores album number for first test user
+        /// </summary>
         string firstAlbum = "917161";
+        /// <summary>
+        /// Stores email for first test user
+        /// </summary>
         string firstEmail = "tester@emailer.domainer";
+        /// <summary>
+        /// Stores album number for second test user
+        /// </summary>
         string secondAlbum = "115511";
+        /// <summary>
+        /// Stores email for first second user
+        /// </summary>
         string secondEmail = "test@email.domain";
+        /// <summary>
+        /// Stores our database connection string 
+        /// </summary>
         string connectionString = "Data Source=ABYDOS-WSS-GOR\\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True";
 
 
+        /// <summary>
+        /// Set specific variables when page loads. On this specific page this method did not do anything.
+        /// </summary>
+        /// <param name="sender">Object who calls this method</param>
+        /// <param name="e">Arguments of the event</param>
         protected void Page_Load(object sender, EventArgs e) {
 
         }
 
+        /// <summary>
+        /// Edit info label after clicking button. Call method <c>userCreate</c> to create users.
+        /// </summary>
+        /// <param name="sender">Object who calls this method</param>
+        /// <param name="e">Arguments of the event</param>
         protected void GenerateButton_Click(object sender, EventArgs e) {
             bool first = userCreate(firstAlbum, firstEmail, 0);
             bool second = userCreate(secondAlbum, secondEmail, 1);
@@ -33,6 +63,16 @@ namespace PI {
             }
         }
 
+        /// <summary>
+        /// Create users and save them in database.
+        /// </summary>
+        /// <param name="album">Test user album number</param>
+        /// <param name="email">Test user email</param>
+        /// <param name="voted">Flag if user voted</param>
+        /// <returns>
+        /// False if user is already in database
+        /// True if user was created (set flag based on 'voted' value)
+        /// </returns>
         protected bool userCreate(string album, string email, int voted) {
             var select = "SELECT saved FROM dbo.Users where album = '" + album + "' and mail = '" + email + "'";
             var c = new SqlConnection(connectionString);

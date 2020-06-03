@@ -26,9 +26,9 @@
         </div>
 
         <div>
-            <asp:TextBox CssClass="form input" ID="email" runat="server" OnTextChanged="TextBox2_TextChanged" ValidateRequestMode="Enabled" Width="383px">email</asp:TextBox>
+            <asp:TextBox CssClass="form input" ID="email" runat="server" ValidateRequestMode="Enabled" Width="383px">email</asp:TextBox>
             <br />
-            <asp:TextBox CssClass="form input" ID="nralbumu" runat="server" OnTextChanged="TextBox1_TextChanged"  Height="22px" Width="383
+            <asp:TextBox CssClass="form input" ID="nralbumu" runat="server"  Height="22px" Width="383
                 px">numer albumu</asp:TextBox>
         <asp:Button CssClass="form button" ID="zaloguj" runat="server" BackColor="White" OnClick="Button1_Click" Text="Zaloguj" />
        

@@ -12,7 +12,7 @@
     <form id="form1" runat="server" class="form">
         <p>
             Wpisz hasło:<br />
-            <asp:TextBox ID="TypePass" runat="server" OnTextChanged="TypePass_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="TypePass" runat="server"></asp:TextBox>
             <asp:Button ID="ButtonPass" runat="server" OnClick="ButtonPass_Click" Text="Autoryzuj" />
         </p>
         <p>

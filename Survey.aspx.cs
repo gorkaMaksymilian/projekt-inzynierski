@@ -21,20 +21,20 @@ namespace PI {
     public partial class Survey : System.Web.UI.Page {
         
         /// <summary>
-        /// Store our database connection string 
+        /// Stores our database connection string 
         /// </summary>
         string connectionString = "Data Source=ABYDOS-WSS-GOR\\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True";
         /// <summary>
-        /// Store number of questions loaded form SQL querry
+        /// Stores number of questions loaded form SQL querry
         /// </summary>
         int numberOfQuestions = 0;
         /// <summary>
-        /// Store List of RadioButtonList
+        /// Stores List of RadioButtonList
         /// </summary>
         List<RadioButtonList> RBL;
         /// <summary>
-        /// Store List of strings. 
-        /// Read the list form Session
+        /// Stores List of strings. 
+        /// Reads the list form Session
         /// </summary>
         List<string> variablesList;
 
