@@ -9,21 +9,28 @@ using System.Web.UI.WebControls;
 
 
 namespace PI {
+    /// <summary>
+    ///The main <c>Login</c> class
+    ///Contains all methods that are able to be called on Login.aspx
+    /// </summary>
     public partial class Login : System.Web.UI.Page {
         string connectionString = "Data Source=ABYDOS-WSS-GOR\\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True";
 
+        /// <summary>
+        /// Set specific variables when page loads. On this specific page this method did not do anything.
+        /// </summary>
+        /// <param name="sender">Object who calls this method</param>
+        /// <param name="e">Arguments of the event</param>
         protected void Page_Load(object sender, EventArgs e) {
             
         }
 
-        protected void TextBox2_TextChanged(object sender, EventArgs e) {
 
-        }
-
-        protected void TextBox1_TextChanged(object sender, EventArgs e) {
-
-        }
-
+        /// <summary>
+        /// Validate email and login, save them in Session and redirect to page survey.aspx after button click
+        /// </summary>
+        /// <param name="sender">Object who calls this method</param>
+        /// <param name="e">Arguments of the event</param>
         protected void Button1_Click(object sender, EventArgs e) {
             LoginValidator emailExist = new EmailPresent();
             LoginValidator emailValid = new EmailValid();
@@ -56,6 +63,13 @@ namespace PI {
 
         }
 
+        /// <summary>
+        /// Checks if user already exist in database and if he already voted.
+        /// </summary>
+        /// <returns>
+        /// Return true if user did not vote yet but exist.
+        /// Return false if user exist and he voted.
+        /// </returns>
         protected bool userExist() {
             var select = "SELECT saved FROM dbo.Users where album = '" + nralbumu.Text + "' and mail = '" + email.Text + "'";
             var c = new SqlConnection(connectionString);
@@ -90,6 +104,9 @@ namespace PI {
             return false;
         }
 
+        /// <summary>
+        /// Add save user in our database
+        /// </summary>
         protected void addUser() {
             var connection = new SqlConnection(connectionString);
             SqlCommand command = connection.CreateCommand();
@@ -102,6 +119,11 @@ namespace PI {
         }
 
 
+        /// <summary>
+        /// Check if email and album number are valid.
+        /// </summary>
+        /// <param name="sender">Object who calls this method</param>
+        /// <param name="e">Arguments of the event</param>
         protected void Sprawdz(object sender, EventArgs e) {
             LoginValidator emailExist = new EmailPresent();
             LoginValidator emailValid = new EmailValid();
@@ -130,10 +152,18 @@ namespace PI {
 
         }
 
+        /// <summary>
+        /// Get album number from textbox
+        /// </summary>
+        /// <returns>Return string with album number</returns>
         public string getAlbum() {
             return nralbumu.Text;
         }
 
+        /// <summary>
+        /// Get email from textbox
+        /// </summary>
+        /// <returns>Return string with email</returns>
         public string getEmail() {
             return email.Text;
         }
