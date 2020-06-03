@@ -14,12 +14,36 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace PI {
+    ///<summary>
+    ///The main <c>Survey</c> class
+    ///Contains all methods that are able to be called on Survey.aspx
+    ///</summary>
     public partial class Survey : System.Web.UI.Page {
+        
+        /// <summary>
+        /// Store our database connection string 
+        /// </summary>
         string connectionString = "Data Source=ABYDOS-WSS-GOR\\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True";
+        /// <summary>
+        /// Store number of questions loaded form SQL querry
+        /// </summary>
         int numberOfQuestions = 0;
+        /// <summary>
+        /// Store List of RadioButtonList
+        /// </summary>
         List<RadioButtonList> RBL;
+        /// <summary>
+        /// Store List of strings. 
+        /// Read the list form Session
+        /// </summary>
         List<string> variablesList;
 
+
+        /// <summary>
+        /// Set specific variables when page loads
+        /// </summary>
+        /// <param name="sender">Object who calls this method</param>
+        /// <param name="e">Arguments of the event</param>
         protected void Page_Load(object sender, EventArgs e) {
             LoadQuestions();
             RBL = GenerateRBL();
@@ -34,24 +58,11 @@ namespace PI {
         }
 
 
-        //Wczytuje pytania do QuestionsGrid
+
+        /// <summary>
+        /// Load SQL querry restult into grid
+        /// </summary>
         protected void LoadQuestions() {
-            /*
-             var select = "select question from dbo.Questions";
-
-             var c = new SqlConnection(connectionString);
-             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, c);
-
-             var commandBuilder = new SqlCommandBuilder(dataAdapter);
-             DataSet ds = new DataSet();
-             dataAdapter.Fill(ds);
-             var dt = ds.Tables[0];
-             numberOfQuestions = dt.Rows.Count;
-
-             Ask1.Text = dt.Rows[0][0].ToString();
-             Ask2.Text = dt.Rows[1][0].ToString();
-             Ask3.Text = dt.Rows[2][0].ToString();
-              */
 
 
             var select = "select question from dbo.Questions";
@@ -73,11 +84,14 @@ namespace PI {
 
         }
 
+
+        /// <summary>
+        /// Generate RadioButtonList for each question
+        /// </summary>
+        /// <returns>List of RadioButtonList objects</returns>
         protected List<RadioButtonList> GenerateRBL() {
-            //HtmlTableRow row = new HtmlTableRow();
             List<RadioButtonList> RBL = new List<RadioButtonList>();
             for (int i = 0; i < numberOfQuestions; i++) {
-                //HtmlTableCell cell = new HtmlTableCell();
                 RadioButtonList radio = new RadioButtonList();
                 for (int j = 1; j <=6; j++) {
                     radio.Items.Add(j.ToString());
@@ -86,7 +100,6 @@ namespace PI {
                 radio.RepeatDirection = RepeatDirection.Horizontal;
                 radio.CellSpacing = 0;
 
-                //cell.Controls.Add(radio);
                 test1.Controls.Add(radio);
                 RBL.Add(radio);
             }
@@ -97,6 +110,11 @@ namespace PI {
 
         }
 
+        /// <summary>
+        /// Set flag 'saved' in Database for specific user and insert his answers,hash and generated password into database
+        /// </summary>
+        /// <param name="passwd">Generated unique passord</param>
+        /// <param name="hash">Generated unique hash</param>
         protected void UserVoted(string passwd, string hash) {
             var connection = new SqlConnection(connectionString);
             SqlCommand command = connection.CreateCommand();
@@ -122,11 +140,21 @@ namespace PI {
 
         }
 
+        /// <summary>
+        /// Transform string into hash array of bytes
+        /// </summary>
+        /// <param name="stringToHash">Text we want to hash</param>
+        /// <returns>Hashe byte array</returns>
         public static byte[] GetHash(string stringToHash) {
             using (HashAlgorithm algorithm = SHA256.Create())
                 return algorithm.ComputeHash(Encoding.UTF8.GetBytes(stringToHash));
         }
 
+        /// <summary>
+        /// Transform string into hash string
+        /// </summary>
+        /// <param name="stringToHash">Text we want to hash</param>
+        /// <returns>Hash as a string</returns>
         public static string GetHashString(string stringToHash) {
             StringBuilder builder = new StringBuilder();
             foreach (byte b in GetHash(stringToHash))
@@ -135,11 +163,21 @@ namespace PI {
             return builder.ToString();
         }
 
+        /// <summary>
+        /// Redirect to page login.aspx after button click
+        /// </summary>
+        /// <param name="sender">Object who calls this method</param>
+        /// <param name="e">Arguments of the event</param>
         protected void returnButton_Click(object sender, EventArgs e) {
             Response.Redirect("login.aspx");
         }
 
 
+        /// <summary>
+        /// Save selected data form each RadioButton into database, send email with generated password and hash to user and redirect to check.aspx
+        /// </summary>
+        /// <param name="sender">Object who calls this method</param>
+        /// <param name="e">Arguments of the event</param>
         protected void SaveButton_Click(object sender, EventArgs e) {
             List<string> selections = new List<string>();
 
