@@ -6,7 +6,6 @@ w sposób umożliwiający zachowanie anonimowości użytkowników.
 * [Wymagania](#wymagania)
 * [Technologie](#technologie)
 * [Oprogramowanie](#oprogramowanie)
-* [Setup](#setup)
 * [Dokumentacja](#dokumentacja)
 
 
@@ -31,9 +30,6 @@ System zrealizowany w formie aplikacji webowej powinien uwzględniać możliwoś
 * [Visual Studio 2019](https://visualstudio.microsoft.com/pl/vs/)
 * [Nunit](https://github.com/nunit/docs/wiki/nunit-documentation)
 * [Selenium](https://www.selenium.dev/)
-
-## Setup
-Soon
 
 ## Dokumentacja
 https://gorkamaksymilian.github.io/projekt-inzynierski/Documentation/annotated.html
