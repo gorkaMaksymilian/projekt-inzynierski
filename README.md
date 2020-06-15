@@ -5,6 +5,7 @@ w sposób umożliwiający zachowanie anonimowości użytkowników.
 ## Spis tresci:
 * [Wymagania](#wymagania)
 * [Technologie](#technologie)
+* [Oprogramowanie](#oprogramowanie)
 * [Setup](#setup)
 * [Dokumentacja](#dokumentacja)
 
@@ -20,10 +21,16 @@ System zrealizowany w formie aplikacji webowej powinien uwzględniać możliwoś
 ## Technologie
 * [C#](https://docs.microsoft.com/pl-pl/dotnet/csharp/) 
 * [ASP.NET](https://dotnet.microsoft.com/) 
-* [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
+* SQL
 * CSS
 * JavaScript
 * HTML
+
+## Oprogramowanie
+* [Microsoft SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/pl/vs/)
+* [Nunit](https://github.com/nunit/docs/wiki/nunit-documentation)
+* [Selenium](https://www.selenium.dev/)
 
 ## Setup
 Soon
