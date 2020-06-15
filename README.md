@@ -21,9 +21,9 @@ System zrealizowany w formie aplikacji webowej powinien uwzględniać możliwoś
 * [C#](https://docs.microsoft.com/pl-pl/dotnet/csharp/) 
 * [ASP.NET](https://dotnet.microsoft.com/) 
 * [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
-* [CSS]
-* [JavaScript]
-* [HTML]
+* CSS
+* JavaScript
+* HTML
 
 ## Setup
 Soon
