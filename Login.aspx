@@ -6,7 +6,7 @@
 <head runat="server">
 <link href="LoginCSS.css" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>Login</title>
 
 </head>
 <body>
